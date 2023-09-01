@@ -1,16 +1,20 @@
-const myHeaders: HeadersInit = new Headers();
-myHeaders.append("Content-Type", "text/plain");
+export const getChatResponse = async (prompt: string): Promise<string> => {
+  console.log('Prompt sent:', prompt); // Step 2: Add this line for logging
 
-const raw = "{\r\n    \"prompt\": \"yes\"\r\n}";
+  const response = await fetch("https://926ljsicr2.execute-api.us-east-1.amazonaws.com/dev", {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      // Remove 'x-api-key' header
+      // 'x-api-key': API_KEY,
+    },
+    body: JSON.stringify({ prompt }),
+  });
 
-const requestOptions: RequestInit = {
-  method: 'POST',
-  headers: myHeaders,
-  body: raw,
-  redirect: 'follow'
+  if (!response.ok) {
+    throw new Error('Failed to fetch response from API.');
+  }
+
+  const data = await response.json();
+  return data.response;
 };
-
-fetch("https://926ljsicr2.execute-api.us-east-1.amazonaws.com/dev", requestOptions)
-  .then((response: Response) => response.text())
-  .then((result: string) => console.log(result))
-  .catch((error: Error) => console.log('error', error));
