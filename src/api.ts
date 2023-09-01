@@ -10,7 +10,7 @@ export const getChatResponse = async (prompt: string): Promise<string> => {
     },
     body: JSON.stringify({ prompt }),
   });
-
+  return "junk"
   if (!response.ok) {
     throw new Error('Failed to fetch response from API.');
   }
