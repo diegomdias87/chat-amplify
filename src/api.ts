@@ -15,6 +15,6 @@ export const getChatResponse = async (prompt: string): Promise<string> => {
   }
   
   const data = await response.json();
-  return "junk"
+  return "junk";
   return data.response;
 };
