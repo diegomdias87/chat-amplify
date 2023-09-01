@@ -13,7 +13,8 @@ export const getChatResponse = async (prompt: string): Promise<string> => {
   if (!response.ok) {
     throw new Error('Failed to fetch response from API.');
   }
-  return "junk"
+  
   const data = await response.json();
+  return "junk"
   return data.response;
 };
