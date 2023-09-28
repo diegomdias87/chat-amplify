@@ -1,7 +1,7 @@
 export const getChatResponse = async (prompt: string): Promise<string> => {
   console.log('Prompt sent:', prompt); // Step 2: Add this line for logging
 
-  const response = await fetch("https://926ljsicr2.execute-api.us-east-1.amazonaws.com/dev", {
+  const response = await fetch("https://dphnt0klca.execute-api.us-east-2.amazonaws.com/dev", {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
